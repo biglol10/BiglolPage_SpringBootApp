@@ -12,6 +12,8 @@ import com.biglolPage.introducingBiglolPage.domain.Projects;
 import com.biglolPage.introducingBiglolPage.domain.ProjectsRepository;
 import com.biglolPage.introducingBiglolPage.domain.Skills;
 import com.biglolPage.introducingBiglolPage.domain.SkillsRepository;
+import com.biglolPage.introducingBiglolPage.domain.User;
+import com.biglolPage.introducingBiglolPage.domain.UserRepository;
 
 @SpringBootApplication
 public class IntroducingBiglolPageApplication {
@@ -24,6 +26,9 @@ public class IntroducingBiglolPageApplication {
 	
 	@Autowired
 	private CourseRepository courseRepository;
+	
+	@Autowired 
+	private UserRepository userRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(IntroducingBiglolPageApplication.class, args);
@@ -32,6 +37,11 @@ public class IntroducingBiglolPageApplication {
 	@Bean
 	CommandLineRunner runner() {
 		return args -> {
+			// username: admin password: admin
+			userRepository.save(new User("admin",
+		      "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG", 
+		      "ADMIN"));
+
 			// Skills
 			repository.save(new Skills("Html", "./Images/Skills/logo-html-5.png", "Developing using HTML-5", 3.5));
 			repository.save(new Skills("CSS", "./Images/Skills/logo-css.png", "Can use basics of CSS and use functions that change according to the screen", 4.0));
@@ -48,6 +58,7 @@ public class IntroducingBiglolPageApplication {
 			projectRepository.save(new Projects("NetflixClone", "./Images/Projects/NetflixClone.png", "https://youtu.be/XtMThy8QKqU", "This was the first clone project I've made. Thanks to this I got interested in React", "Clever Programmer", "https://netflix-clone-14a2a.web.app/", 4.5, false));
 			projectRepository.save(new Projects("AmazonClone", "./Images/Projects/AmazonClone.png", "https://youtu.be/RDV3Z1KCBvo", "This was a good project since I could experience react interacting with firebase database. The database and configuration needs to be reworked", "Clever Programmer", "https://myproject-20506.web.app/", 4.5, false));
 			projectRepository.save(new Projects("SystemMonitoring", "./Images/Projects/SystemMonitoring.png", "Unavailable", "Used all my knowledge of JS and .NET to create a MES monitoring system", "Biglol", "Unavailable", 4.5, true));
+			projectRepository.save(new Projects("FileDistributionProgram", "./Images/Projects/FileDistImage.png", "Unavailable", "Used Winform and multi tasks to deploy neccessary files asyncronously", "Biglol", "Unavailable", 4.5, true));
 			
 			// Courses Taken
 			courseRepository.save(new Course("Learn Bootstrap 4 By Creating an Advanced Bootstrap Theme", "https://www.udemy.com/course/learn-bootstrap-4-by-creating-an-advanced-bootstrap-theme/learn/lecture/16715782?start=0#overview", "./Images/Courses/Bootstrap4.png", "Drew Ryan, Website Development and Design Online Instructor", "11,000", 4.0, "T"));
