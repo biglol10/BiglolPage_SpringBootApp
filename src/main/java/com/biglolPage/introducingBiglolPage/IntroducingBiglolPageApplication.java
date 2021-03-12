@@ -37,9 +37,9 @@ public class IntroducingBiglolPageApplication {
 	@Bean
 	CommandLineRunner runner() {
 		return args -> {
-			// username: admin password: admin
-			userRepository.save(new User("admin",
-		      "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG", 
+			// username: biglol password:   // BCrypt calculator
+			userRepository.save(new User("biglol",
+		      "$2a$10$9eRYjrMbCzzOinGzVCEaMO20n5hVjrepXY5WU.cnBTK2j5iZYFnqe", 
 		      "ADMIN"));
 
 			// Skills

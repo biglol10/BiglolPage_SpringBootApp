@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.biglolPage.introducingBiglolPage.service.UserDetailServiceImpl;
 
@@ -34,12 +35,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    auth.userDetailsService(userDetailsService)
 	    .passwordEncoder(new BCryptPasswordEncoder());
 	  }
+	  
+	  @Override
+	  protected void configure(HttpSecurity http) throws Exception{
+		  http.csrf().disable().cors().and().authorizeRequests()
+		  .antMatchers(HttpMethod.GET, "/courses/**").permitAll()
+		  .antMatchers(HttpMethod.GET, "/skills").permitAll()
+		  .antMatchers(HttpMethod.GET, "/projects").permitAll()
+		  .antMatchers(HttpMethod.POST, "/login").permitAll().anyRequest().authenticated().and()
+		  .addFilterBefore(new LoginFilter("/login", authenticationManager()), UsernamePasswordAuthenticationFilter.class)
+		  .addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+		  ;
+	  }
 	
-    @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-        .httpBasic().and()
-        .authorizeRequests()
-          .antMatchers(HttpMethod.GET, "/courses/**").hasRole("admin");
-    }
+//    @Override
+//    protected void configure(HttpSecurity httpSecurity) throws Exception {
+//        httpSecurity
+//        .httpBasic().and()
+//        .authorizeRequests()
+//          .antMatchers(HttpMethod.GET, "/courses/**").hasRole("admin");
+//    }
 }
