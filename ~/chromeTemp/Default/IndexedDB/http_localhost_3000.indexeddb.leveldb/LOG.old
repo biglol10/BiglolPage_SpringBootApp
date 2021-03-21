@@ -1,0 +1,8 @@
+2021/03/19-17:11:31.837 5a08 Reusing MANIFEST C:\Users\81670\Desktop\Programming\introducingBiglolPage\introducingBiglolPage\~\chromeTemp\Default\IndexedDB\http_localhost_3000.indexeddb.leveldb/MANIFEST-000001
+2021/03/19-17:11:31.837 5a08 Recovering log #11
+2021/03/19-17:11:31.837 5a08 Reusing old log C:\Users\81670\Desktop\Programming\introducingBiglolPage\introducingBiglolPage\~\chromeTemp\Default\IndexedDB\http_localhost_3000.indexeddb.leveldb/000011.log 
+2021/03/19-17:11:33.842 2fb8 Level-0 table #15: started
+2021/03/19-17:11:33.842 2fb8 Level-0 table #15: 0 bytes OK
+2021/03/19-17:11:33.844 2fb8 Delete type=0 #11
+2021/03/19-17:11:33.844 2fb8 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2021/03/19-17:11:33.844 2fb8 Manual compaction at level-1 from (begin) .. (end); will stop at (end)
