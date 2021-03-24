@@ -18,7 +18,7 @@ import com.biglolPage.introducingBiglolPage.domain.User;
 import com.biglolPage.introducingBiglolPage.domain.UserRepository;
 
 @SpringBootApplication
-public class IntroducingBiglolPageApplication extends SpringBootServletInitializer{
+public class IntroducingBiglolPageApplication {
 	
 	@Autowired
 	private SkillsRepository repository;
@@ -32,12 +32,6 @@ public class IntroducingBiglolPageApplication extends SpringBootServletInitializ
 	@Autowired 
 	private UserRepository userRepository;
 	
-	@Override
-    protected SpringApplicationBuilder configure
-        (SpringApplicationBuilder application) {
-        return application.sources(IntroducingBiglolPageApplication.class);
-    }
-
 	public static void main(String[] args) {
 		SpringApplication.run(IntroducingBiglolPageApplication.class, args);
 	}
