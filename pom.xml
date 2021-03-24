@@ -11,7 +11,7 @@
 	<groupId>com.biglolPage</groupId>
 	<artifactId>introducingBiglolPage</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>introducingBiglolPage</name>
 	<description>Spring Boot Project for Biglol&apos;s Page</description>
 	<properties>
