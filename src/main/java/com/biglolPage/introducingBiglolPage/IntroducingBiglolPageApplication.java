@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 import com.biglolPage.introducingBiglolPage.domain.Course;
@@ -16,7 +18,7 @@ import com.biglolPage.introducingBiglolPage.domain.User;
 import com.biglolPage.introducingBiglolPage.domain.UserRepository;
 
 @SpringBootApplication
-public class IntroducingBiglolPageApplication {
+public class IntroducingBiglolPageApplication extends SpringBootServletInitializer{
 	
 	@Autowired
 	private SkillsRepository repository;
@@ -29,6 +31,12 @@ public class IntroducingBiglolPageApplication {
 	
 	@Autowired 
 	private UserRepository userRepository;
+	
+	@Override
+    protected SpringApplicationBuilder configure
+        (SpringApplicationBuilder application) {
+        return application.sources(IntroducingBiglolPageApplication.class);
+    }
 
 	public static void main(String[] args) {
 		SpringApplication.run(IntroducingBiglolPageApplication.class, args);
