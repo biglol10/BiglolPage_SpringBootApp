@@ -7,13 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Skills {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
-	private String name, path, opinion;
+	
+	@Size(min=3, message="Skill name should be at least 3 characters")
+	private String name;
+	private String path, opinion;
 	private double rating;
 	
 	public Skills() {

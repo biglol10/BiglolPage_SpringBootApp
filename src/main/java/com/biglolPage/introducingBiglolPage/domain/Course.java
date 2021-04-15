@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Course {
@@ -11,7 +12,9 @@ public class Course {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	private String name, url, path, instructorDetails, price;
+	@Size(min=3, message="Course name should be at least 3 characters")
+	private String name;
+	private String url, path, instructorDetails, price;
 	private double rating;
 	private String courseType;
 	
