@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 
 import com.biglolPage.introducingBiglolPage.service.UserDetailServiceImpl;
 
@@ -38,7 +39,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	  
 	  @Override
 	  protected void configure(HttpSecurity http) throws Exception{
-		  http.csrf().disable().cors().and().authorizeRequests()
+		  http.csrf().disable().cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
+		  .and().authorizeRequests()
 		  .antMatchers(HttpMethod.GET, "/courses/**").permitAll()
 		  .antMatchers(HttpMethod.GET, "/skills").permitAll()
 		  .antMatchers(HttpMethod.GET, "/projects").permitAll()
